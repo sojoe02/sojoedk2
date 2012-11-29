@@ -1,1 +1,10 @@
-nbproject/
+nbproject/private
+build/
+nbbuild/
+dist/
+nbdist/
+
+*.class
+*.swp
+*.jar
+*.jpg

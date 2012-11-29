@@ -1,0 +1,194 @@
+/* 
+    Document   : sojoe_default
+    Created on : 22-05-2011, 13:31:32
+    Author     : Zagadka
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2.1/
+*/
+
+
+body{
+    background-color: aliceblue;
+    font-size : 100%
+}
+
+.HP_title{
+    background-color:  cadetblue;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+
+.main_menu {
+    background-color:  cadetblue;  
+    font-size: 0.7em;
+    font-family: sans-serif;
+    font-weight:bold;
+    float : left;
+    padding-right:10px;
+    padding-left:00px;
+    margin-left: 10px;
+    margin-top: 2.5em;
+    width:130px;
+    border: 3px solid;
+    border-color : #99ccff;
+    position : fixed;
+    
+}
+
+.menumain{
+    background-color: cadetblue;
+}
+
+.menumain li{ 
+    list-style: none;
+    text-align: left;
+    text-decoration:none;
+    margin-left: -25px;
+    padding:5px 0; 
+    padding-left:  0;    
+}
+
+.menumain li:hover{
+    background: aliceblue;       
+}
+
+
+.menutop{
+    /*background-color: #99ccff;*/}
+
+.menutop li{
+    list-style: none;
+    text-align: left;
+    text-decoration:none;
+    margin-left: -25px;
+    padding:5px 0;  
+    /*padding-left:  0;*/
+}
+
+.menutop li:hover{
+    background: aliceblue;
+}
+
+
+.main_menu a:link {
+    color: aliceblue;
+}
+.main_menu a:visited{
+    color: black;
+}
+
+body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.mainwindow{
+    margin-left : 170px;
+}
+
+h2{
+    font-family: font-family:Arial,Helvetica,sans-serif;
+    background-color: #99ccff;
+    /*    display : inline;*/
+    width:80%;
+    /*margin-left: 100px;*/
+    /*border: 2px solid;*/
+    font-size : 1.5em;
+    
+}
+
+h3{
+    font-family: sans-serif;
+    /*background-color:  gainsboro;  */
+    width:100%;
+    /*margin-left: 100px;*/
+    font-size:1.12em;
+
+}
+
+.description{
+    font-size: 1.3em;
+    font-family: sans-serif;
+    background-color: ghostwhite;
+    width: 80%;
+    text-align: justify;
+}
+
+.source{
+    width: 80%;
+    height: 150px;
+    border : 3px solid;
+    border-color: cadetblue;
+    background-color: ghostwhite;
+}
+
+.sourcelong{
+    width: 80%;
+    height: 300px;
+    border : 3px solid;
+    border-color: cadetblue;
+    background-color: ghostwhite;
+}
+
+.sourcesuperlong{
+    width: 80%;
+    height: 800px;
+    border : 3px solid;
+    border-color: cadetblue;
+    background-color: ghostwhite;
+}
+
+
+
+
+.sourceshort{
+    width: 80%;
+    height: 100px;
+    border : 3px solid;
+    border-color: cadetblue;
+    background-color: ghostwhite;
+}
+
+.output{
+    width: 80%;
+    height: 100px;
+    border : 3px solid;
+    border-color: cadetblue;
+
+}
+
+.output#Restoutput{
+    width: 80%;
+    height: 200px;
+    border : 3px solid;
+    border-color: cadetblue;
+
+}
+
+
+#map_canvas {
+    /*  bottom:0;
+      left:0;
+      right:0;
+      top:0;*/
+
+    border: 3px solid; 
+    border-color: cadetblue;
+    width: 640px; 
+    height :480px;
+}
+
+@media print {
+    #map_canvas {
+        height: 950px;
+    }
+}

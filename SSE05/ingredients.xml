@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ingredients.xml
+    Created on : 28. maj 2011, 20:07
+    Author     : Zagadka
+    Description:
+        Purpose of the document follows.
+-->
+
+<recipe>
+	<desc> This is recipe description </desc>
+	<ingredients>
+	  <ingredient name= "carrot" calories="500"></ingredient>
+	  <ingredient name= "parrot" calories="1500"></ingredient>
+	  <ingredient name= "goat" calories="5"></ingredient>
+	</ingredients>
+</recipe>
