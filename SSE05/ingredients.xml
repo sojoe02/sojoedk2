@@ -9,7 +9,8 @@
 -->
 
 <recipe>
-	<desc> This is recipe description </desc>
+	<title>Carrots and Parrots, stewed</title>
+	<desc>This is a description of the recipe</desc>
 	<ingredients>
 	  <ingredient name= "carrot" calories="500"></ingredient>
 	  <ingredient name= "parrot" calories="1500"></ingredient>

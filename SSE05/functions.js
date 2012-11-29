@@ -3,6 +3,29 @@
  * and open the template in the editor.
  */
 
+
+
+function getRecipeData(){
+    
+    document.getElementById('ingredients').innerHTML ="" ;
+    
+    var XMLdoc = loadXMLDoc("ingredients.xml");    
+    var ingredients = [];    
+    var x = XMLdoc.getElementsByTagName("ingredient");        
+ 
+    for (var i=0;i< x.length ;i++){
+        var inner = [2];
+        inner[0] = x[i].getAttribute("name");        
+        inner[1] = x[i].getAttribute("calories");
+        
+        ingredients[i] = inner;
+    }
+    
+    showIngredients(ingredients);
+    showTitle(XMLdoc.getElementsByTagName("title")[0].childNodes[0].nodeValue);
+    showDesc(XMLdoc.getElementsByTagName("desc")[0].childNodes[0].nodeValue);
+}
+
 function showIngredients(ingredients){    
     
     var listing = document.getElementById('ingredients');
@@ -20,32 +43,10 @@ function showIngredients(ingredients){
     }  
     listing.appendChild(table); 
     
-    
-}
-
-function getRecipeData(){
-    
-    document.getElementById('ingredients').innerHTML ="" ;
-    
-    var XMLdoc = loadXMLDoc("ingredients.xml");    
-    var ingredients = [];    
-    var x = XMLdoc.getElementsByTagName("ingredient");    
-    var list = document.getElementById('title');
- 
-    for (var i=0;i< x.length ;i++){
-        var inner = [2];
-        inner[0] = x[i].getAttribute("name");        
-        inner[1] = x[i].getAttribute("calories");        
-       
-        
-        ingredients[i] = inner;
-    }
-    
-    showIngredients(ingredients);
 }
 
 function showTitle(title){
-    document.getElementByID("title").innerHTML = title;
+    document.getElementById("title").innerHTML = title;
 }
 
 
@@ -55,9 +56,7 @@ function showDesc(desc){
 
 
 
-function createIngredientArray(rows){
-    
-    
+function createIngredientArray(rows){   
     
 }
 
