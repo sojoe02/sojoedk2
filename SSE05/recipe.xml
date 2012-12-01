@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ingredients.xml
+    Created on : 28. maj 2011, 20:07
+    Author     : Zagadka
+    Description:
+        Purpose of the document follows.
+-->
+
+<recipe>
+	<title>Stiffy iffy, brewed</title>
+	<desc>This is a description of the recipe</desc>
+	<ingredients>
+           <ingredient name="beef" calories="4500"/>
+	  <ingredient name="ash" calories="0"/>
+	  <ingredient name="soda" calories="1005"/>         
+	  <ingredient name="spicegirl" calories="40"/>
+	</ingredients>        
+        <video type="vimeo" id="54510052"/>
+</recipe>

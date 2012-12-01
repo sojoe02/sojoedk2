@@ -9,7 +9,7 @@ function getRecipeData(){
 
     document.getElementById('ingredients').innerHTML ="" ;
 
-    var XMLdoc = loadXMLDoc("ingredients.xml");
+    var XMLdoc = loadXMLDoc("recipe.xml");
     var ingredients = [];
     var x = XMLdoc.getElementsByTagName("ingredient");
 
@@ -17,7 +17,6 @@ function getRecipeData(){
         var inner = [2];
         inner[0] = x[i].getAttribute("name");
         inner[1] = x[i].getAttribute("calories");
-
         ingredients[i] = inner;
     }
 
@@ -27,8 +26,9 @@ function getRecipeData(){
     
     //load the video data, throw and exception if the video tag doesn't exist:
     try{
-        var vidID = XMLdoc.getElementsByTagName("video")[0].getAttribute("id");
-        showVideo(vidID);
+        var vidID = XMLdoc.getElementsByTagName("video")[0].getAttribute("id");        
+        showVideo(vidID, XMLdoc.getElementsByTagName("video")[0].getAttribute("type"));              
+        
     } catch(e){         
     }     
 }
@@ -60,27 +60,31 @@ function showDesc(desc){
 }
 
 //Video stuff:
-function initVideo(){
+function initYoutube(){
     // 2. This code loads the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
     tag.src = "//www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
 }
 
-function showVideo(link){   
-
-    //var link = 'CEVdca9U9LM';
-
-    var player = new YT.Player('video', {
-        height: '390',
-        width: '640',
-        videoId: link,
-        events: {
-    //'onReady': onPlayerReady,
-    //'onStateChange': onPlayerStateChange
+function showVideo(link, type){  
+    
+    if(type == "youtube"){
+        var player = new YT.Player('video', {
+            height: '390',
+            width: '640',
+            videoId: link   
+        });      
+    } else if(type == "vimeo"){
+        var frame = document.createElement('iframe');
+        frame.setAttribute("src", "http://player.vimeo.com/video/"+ link);
+        frame.setAttribute("width", 640);
+        frame.setAttribute("height", 480);        
+        document.getElementById('video').appendChild(frame);
+        
     }
-    });  
     
 }
 
