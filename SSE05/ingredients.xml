@@ -12,8 +12,10 @@
 	<title>Carrots and Parrots, stewed</title>
 	<desc>This is a description of the recipe</desc>
 	<ingredients>
-	  <ingredient name= "carrot" calories="500"></ingredient>
-	  <ingredient name= "parrot" calories="1500"></ingredient>
-	  <ingredient name= "goat" calories="5"></ingredient>
+           <ingredient name="carrot" calories="500"/>
+	  <ingredient name="parrot" calories="1500"/>
+	  <ingredient name="goat" calories="5"/>
 	</ingredients>
+        
+        <video type="youtube" id="jqWHidMPsvo"/>
 </recipe>
