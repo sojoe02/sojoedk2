@@ -30,7 +30,16 @@ function getRecipeData(){
         showVideo(vidID, XMLdoc.getElementsByTagName("video")[0].getAttribute("type"));              
         
     } catch(e){         
-    }     
+    }   
+    
+    try{
+        var setID = XMLdoc.getElementsByTagName("images")[0].getAttribute("id");
+        handleFlikr(setID);
+    } catch(e){
+        
+    }
+    
+    //handleFlikr('72157624042883634');
 }
 
 function showIngredients(ingredients){
@@ -88,6 +97,43 @@ function showVideo(link, type){
     
 }
 
+function handleFlikr(setID){    
+    document.getElementById('images').innerHTML = "";  
+    
+    var func = 'getPics';
+    
+    jQuery.get("imageFetch.php",{
+        func : func ,
+        setID : setID
+        
+    },function(data){     
+        var jsonobj = JSON.parse(data) ;
+        var photoarray = jsonobj.photoset;
+        
+        for(var i=0; i<5;i++){
+            jQuery("<img/>").attr({
+                //building the image:
+                src : 'http://farm' 
+                + photoarray.photo[i].farm
+                + '.static.flickr.com/'
+                + photoarray.photo[i].server + '/'
+                + photoarray.photo[i].id + '_'
+                + photoarray.photo[i].secret + '.jpg',            
+                id : photoarray.photo[i].id ,
+                //setting the class and title:
+                'class' : 'click',
+                title : 'Click to show location on map'
+            }).appendTo("#images");
+        }
+    });
+}
+
+function drawPhotos(data)
+{  
+    document.getElementById('images').innerHTML = data;
+    JSONdoc.getElementsByTagName(name)
+    var images =  XMLdoc.getElementsByTagName('photo');
+}
 
 function loadXMLDoc(dname)
 {
