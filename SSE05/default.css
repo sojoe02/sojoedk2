@@ -1,0 +1,74 @@
+/* 
+    Document   : default
+    Created on : 02-12-2012, 15:23:16
+    Author     : Sojoe
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;   
+}
+
+body{
+    background-color:darkgrey;
+    font-size : 100%; 
+    width: 50%;
+    margin-left: auto;
+margin-right: auto;
+    /*text-align: center; */
+}
+
+#title{
+    font-size: 6.0em;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#desc{
+    font-size: 1.7em;
+    margin-bottom: 30px;
+    margin-top : 30px;
+    text-align: center;
+}
+
+#images {  
+    margin-left:auto; 
+    margin-right:auto;
+    width : 50%;
+    height : 500px;
+    border: 3px solid; 
+    border-color: cadetblue;    
+    overflow: auto;
+    text-align: center;    
+}
+
+table {
+    margin-left:auto; 
+    margin-right:auto;
+    width : 50%;
+  }
+
+#ingtable{
+    
+}
+
+#video{
+    text-align: center;
+}
+
+#ingtable,td,th{ 
+    font-family: Arial,Helvetica,sans-serif;   
+    color: #333333;
+    font-weight: bold;
+    border-bottom-style: solid;  
+    
+    /*width: 50%;*/
+}
+
+
+
+
+
+
+

@@ -4,6 +4,16 @@
  */
 
 
+//Video stuff:
+function init(){
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "//www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    getRecipeData();
+}
+
 
 function getRecipeData(){
 
@@ -34,18 +44,18 @@ function getRecipeData(){
     
     try{
         var setID = XMLdoc.getElementsByTagName("images")[0].getAttribute("id");
-        handleFlikr(setID);
+        showImages(setID);
     } catch(e){
         
     }
     
-    //handleFlikr('72157624042883634');
 }
 
 function showIngredients(ingredients){
 
     var listing = document.getElementById('ingredients');
     var table   = document.createElement('table');
+    table.setAttribute("id", "ingredienttable");
     var row=table.insertRow(0);
 
     for (var i=0; i<ingredients.length;i++){
@@ -68,17 +78,11 @@ function showDesc(desc){
     document.getElementById("desc").innerHTML = desc;
 }
 
-//Video stuff:
-function initYoutube(){
-    // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-    tag.src = "//www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    
-}
+
 
 function showVideo(link, type){  
+    
+    document.getElementById('video').innerHTML = "";
     
     if(type == "youtube"){
         var player = new YT.Player('video', {
@@ -91,13 +95,12 @@ function showVideo(link, type){
         frame.setAttribute("src", "http://player.vimeo.com/video/"+ link);
         frame.setAttribute("width", 640);
         frame.setAttribute("height", 480);        
-        document.getElementById('video').appendChild(frame);
-        
+        document.getElementById('video').appendChild(frame);        
     }
     
 }
 
-function handleFlikr(setID){    
+function showImages(setID){    
     document.getElementById('images').innerHTML = "";  
     
     var func = 'getPics';
@@ -126,13 +129,6 @@ function handleFlikr(setID){
             }).appendTo("#images");
         }
     });
-}
-
-function drawPhotos(data)
-{  
-    document.getElementById('images').innerHTML = data;
-    JSONdoc.getElementsByTagName(name)
-    var images =  XMLdoc.getElementsByTagName('photo');
 }
 
 function loadXMLDoc(dname)
