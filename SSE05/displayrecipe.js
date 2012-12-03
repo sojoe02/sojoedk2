@@ -37,17 +37,12 @@ function getRecipeData(){
     //load the video data, throw and exception if the video tag doesn't exist:
     try{
         var vidID = XMLdoc.getElementsByTagName("video")[0].getAttribute("id");        
-        showVideo(vidID, XMLdoc.getElementsByTagName("video")[0].getAttribute("type"));              
-        
-    } catch(e){         
-    }   
-    
+        showVideo(vidID, XMLdoc.getElementsByTagName("video")[0].getAttribute("type"));                    
+    } catch(e){}       
     try{
         var setID = XMLdoc.getElementsByTagName("images")[0].getAttribute("id");
         showImages(setID);
-    } catch(e){
-        
-    }
+    } catch(e){}
     
 }
 
