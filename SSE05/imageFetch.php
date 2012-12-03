@@ -13,7 +13,7 @@ class ImageFetch{
         
         $search = 'http://api.flickr.com/services/rest/'
                 .'?method=flickr.photosets.getPhotos'
-                .'&api_key=bd3ec6cc5b1ac77c44b4a52708f62328'
+                .'&api_key=233d3164af0d4da4ac09816038a5315a'
                 .'&photoset_id='. urlencode($query)
                 .'&per_page=5&format=json&nojsoncallback=1';
                 //.'&api_sig=b6f0cc0993ee36ce487bdd5b4521a686';

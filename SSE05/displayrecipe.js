@@ -55,14 +55,14 @@ function showIngredients(ingredients){
 
     var listing = document.getElementById('ingredients');
     var table   = document.createElement('table');
-    table.setAttribute("id", "ingredienttable");
+    table.setAttribute("id", "ingtable");
     var row=table.insertRow(0);
 
     for (var i=0; i<ingredients.length;i++){
 
         row         = table.insertRow(0);
         cell1 = row.insertCell(0);
-        cell2 = row.insertCell(1);
+        cell2 = row.insertCell(1);       
 
         cell1.innerHTML=ingredients[i][0];
         cell2.innerHTML=ingredients[i][1];
