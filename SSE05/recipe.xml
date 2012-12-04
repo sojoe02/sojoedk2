@@ -12,10 +12,10 @@
 	<title>Stiffy iffy, brewed</title>
 	<desc>This is a description of the recipe</desc>
 	<ingredients>
-           <ingredient name="beef" calories="4500"/>
-	  <ingredient name="ash" calories="0"/>
-	  <ingredient name="soda" calories="1005"/>         
-	  <ingredient name="spicegirl" calories="40"/>
+           <ingredient name="beef" calories="4500" amount="4" amountType="kg"/>
+	  <ingredient name="ash" calories="0" amount="43" amountType="g"/>
+	  <ingredient name="soda" calories="1005" amount="3" amountType="ml"/>         
+	  <ingredient name="spicegirl" calories="40" amount="3" amountType="l"/>
 	</ingredients>        
         <video type="vimeo" id="54510052"/>
         <images type="flikr" id="72157627429995851"/>
