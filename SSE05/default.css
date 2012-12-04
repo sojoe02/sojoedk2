@@ -13,10 +13,10 @@ root {
 body{
     background-color:darkgrey;
     font-size : 100%; 
-    width: 50%;
+    width: 800px;
     margin-left: auto;
 margin-right: auto;
-    /*text-align: center; */
+    text-align: center; 
 }
 
 #title{
@@ -35,10 +35,10 @@ margin-right: auto;
 #images {  
     margin-left:auto; 
     margin-right:auto;
-    width : 50%;
+    width : 640px;
     height : 500px;
-    border: 3px solid; 
-    border-color: cadetblue;    
+    /*border: 3px solid; 
+    border-color: cadetblue; */  
     overflow: auto;
     text-align: center;    
 }
@@ -61,7 +61,8 @@ table {
     font-family: Arial,Helvetica,sans-serif;   
     color: #333333;
     font-weight: bold;
-    border-bottom-style: solid;  
+    border-bottom-style: solid; 
+    text-align: left;
     
     /*width: 50%;*/
 }

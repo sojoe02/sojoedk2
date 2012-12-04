@@ -5,21 +5,18 @@
 
 
 //Video stuff:
-function init(){
-    // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-    tag.src = "//www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+function init(){   
     getRecipeData();
 }
+
+var vidID;
 
 
 function getRecipeData(){
 
     document.getElementById('ingredients').innerHTML ="" ;
 
-    var XMLdoc = loadXMLDoc("recipe.xml");
+    var XMLdoc = loadXMLDoc("recipe_1.xml");
     var ingredients = [];
     var x = XMLdoc.getElementsByTagName("ingredient");
 
@@ -36,8 +33,9 @@ function getRecipeData(){
     
     //load the video data, throw and exception if the video tag doesn't exist:
     try{
-        var vidID = XMLdoc.getElementsByTagName("video")[0].getAttribute("id");        
-        showVideo(vidID, XMLdoc.getElementsByTagName("video")[0].getAttribute("type"));                    
+        vidID = XMLdoc.getElementsByTagName("video")[0].getAttribute("id");
+        var vidType = XMLdoc.getElementsByTagName("video")[0].getAttribute("type");
+        showVideo(vidType);                    
     } catch(e){}       
     try{
         var setID = XMLdoc.getElementsByTagName("images")[0].getAttribute("id");
@@ -74,26 +72,49 @@ function showDesc(desc){
 }
 
 
+/*
+ * Video playback enabling code:
+ */
 
-function showVideo(link, type){  
+function onYouTubeIframeAPIReady()
+{    
+    window.player = new YT.Player('video', {
+        width: '640',
+        height: '480',
+        videoId: vidID,
+        events: {
+            'onReady': onPlayerReady            
+        }
+    });
+}
+
+function onPlayerReady(event){    
+    event.target.playVideo();
+}
+
+function showVideo(type){  
     
     document.getElementById('video').innerHTML = "";
     
-    if(type == "youtube"){
-        var player = new YT.Player('video', {
-            height: '390',
-            width: '640',
-            videoId: link   
-        });      
-    } else if(type == "vimeo"){
+    if(type == "youtube"){   
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "//www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);        
+    }            
+    else if(type == "vimeo"){
         var frame = document.createElement('iframe');
-        frame.setAttribute("src", "http://player.vimeo.com/video/"+ link);
+        frame.setAttribute("src", "http://player.vimeo.com/video/"+ vidID);
         frame.setAttribute("width", 640);
         frame.setAttribute("height", 480);        
-        document.getElementById('video').appendChild(frame);        
+        document.getElementById('video').appendChild(frame);    
+        document.getElementsByTagName('video')[0].play();
     }
     
 }
+
+
 
 function showImages(setID){    
     document.getElementById('images').innerHTML = "";  
