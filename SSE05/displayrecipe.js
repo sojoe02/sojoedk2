@@ -31,7 +31,7 @@ function getRecipeData(){
     showTitle(XMLdoc.getElementsByTagName("title")[0].childNodes[0].nodeValue);
     showDesc(XMLdoc.getElementsByTagName("desc")[0].childNodes[0].nodeValue);
     
-    //load the video data, throw and exception if the video tag doesn't exist:
+    //load the video data, throw an exception if the video tag doesn't exist:
     try{
         vidID = XMLdoc.getElementsByTagName("video")[0].getAttribute("id");
         var vidType = XMLdoc.getElementsByTagName("video")[0].getAttribute("type");
