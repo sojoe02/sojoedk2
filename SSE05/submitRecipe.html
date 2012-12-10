@@ -11,6 +11,9 @@ and open the template in the editor.
         </style>
         <script type="text/javascript" src="../jsp/jquery-1.8.3.min.js" ></script>
         <script type="text/javascript" src="submitRecipe.js" ></script>
+        <script  type="text/javascript">         
+            $(document).ready(init);
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
@@ -20,8 +23,10 @@ and open the template in the editor.
                 <tr id="ingHead"><th>Ingredient</th><th>Amount</th><th>Amount Type</th></tr>
             </table>
         </div>
+        
         <div id="setDesc"></div>
         <div id="setVideo"></div>
         <div id="setImages"></div>
+        <div id="preview"></div>
     </body>
 </html>
