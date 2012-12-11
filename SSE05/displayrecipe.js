@@ -53,7 +53,7 @@ function showIngredients(ingredients){
 
     for (var i=0; i<ingredients.length;i++){
 
-        row         = table.insertRow(0);
+        row         = table.insertRow(0);        
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);       
 

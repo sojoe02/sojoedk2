@@ -19,14 +19,45 @@ and open the template in the editor.
     <body>
         <div id="setTitle"></div>
         <div id="setIngredients">
-            <table id="ingInputTable"> 
-                <tr id="ingHead"><th>Ingredient</th><th>Amount</th><th>Amount Type</th></tr>
+            <table id="ingredientTable"> 
+                <tr id="ingHead"><th></th><th>Ingredient</th><th>Amount</th><th>Amount Type</th></tr>                              <tr>
+                    <td><button type="button" onclick="addIngredient()">
+                            Add
+                        </button>
+                    </td>
+                    <td><input type="text" id="inputIngredient"/></td>
+                    <td><input type="text" id="inputAmount"/></td>
+                    <td><input type="text" id="inputAmountType"/></td>                        
+                </tr>
             </table>
-        </div>
-        
-        <div id="setDesc"></div>
-        <div id="setVideo"></div>
-        <div id="setImages"></div>
-        <div id="preview"></div>
+
+            <table>
+                <tr><td>Video ID</td><td>Provider</td></tr>
+                <tr>
+                    
+                    <td><input type="text" id="setVideoID"/><td>                        
+                        <select id="setVideoType">
+                            <option>Vimeo</option>
+                            <option>Youtube</option>
+                        </select>
+                </tr> 
+                <tr><td>ImageSet ID</td><td>Provider</td></tr>
+                <tr>
+                    <td><input type="text" id="setImageID"/><td>
+                        <select id="setImageType">
+                            <option>Flickr</option>
+                        </select>
+                </tr>
+                <tr><td>Description</td><td></td></tr>
+                <tr>
+                    <td><input type="text" id="setDesc"/><td>
+                   
+                </tr>
+            </table>
+        </div>     
+        <div id="preview"><button type="button" onclick="preview()">
+                            Preview
+                        </button></div>
+        <div id="submit"></div>
     </body>
 </html>
