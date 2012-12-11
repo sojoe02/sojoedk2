@@ -1,0 +1,43 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>Search Recipe</title>
+        <style type="text/css">
+            @import "default.css";
+        </style>
+        <script type="text/javascript" src="../jsp/jquery-1.8.3.min.js" ></script>
+        <script type="text/javascript" src="searchRecipe.js" ></script>
+        <script  type="text/javascript">         
+            $(document).ready(init);
+        </script>        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div id ="search">
+            <table id="searchTable"> 
+                <tr id="ingHead"><th></th><th>Ingredient</th><th>Amount</th><th>Amount Type</th></tr>                              <tr>
+                    <td><button type="button" onclick="addIngredient()">
+                            Add
+                        </button>
+                    </td>
+                    <td><input type="text" id="inputIngredient"/></td>
+                    <td><input type="text" id="inputAmount"/></td>
+                    <td><input type="text" id="inputAmountType"/></td>                        
+                </tr>
+            </table>            
+        </div>
+        <div>
+            <button type="button" onclick="addIngredient()">
+                Search
+            </button>
+        </div>
+        <div>
+            <table id="displaySearchTable">
+            </table>            
+        </div>        
+    </body>
+</html>
