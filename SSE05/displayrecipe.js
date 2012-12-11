@@ -11,19 +11,30 @@ function init(){
 
 var vidID;
 
+function processData(){
+    
+}
 
-function getRecipeData(){
+function getRecipeData(){    
 
-    document.getElementById('ingredients').innerHTML ="" ;
-
-    var XMLdoc = loadXMLDoc("recipe_1.xml");
+    var query = unescape(window.location.search);
+    if (query.substring(0, 1) == '?') {
+        query = query.substring(1);
+    }
+    //var XMLdoc = loadXMLDoc("recipe.xml")
+    //var text = document.createTextNode(query);
+    //document.getElementById('submit').appendChild(text);
+    
+    var XMLdoc = loadXMLString(query);   
+    
     var ingredients = [];
     var x = XMLdoc.getElementsByTagName("ingredient");
 
     for (var i=0;i< x.length ;i++){
         var inner = [2];
         inner[0] = x[i].getAttribute("name");
-        inner[1] = x[i].getAttribute("calories");
+        inner[1] = x[i].getAttribute("amount");
+        inner[2] = x[i].getAttribute("amountType");
         ingredients[i] = inner;
     }
 
@@ -44,23 +55,29 @@ function getRecipeData(){
     
 }
 
+function loadXMLString(txt){    
+    parser=new DOMParser();
+    xmlDoc=parser.parseFromString(txt,"application/xml");    
+    return xmlDoc;
+}
+
 function showIngredients(ingredients){
 
-    var listing = document.getElementById('ingredients');
-    var table   = document.createElement('table');
-    table.setAttribute("id", "ingtable");
-    var row=table.insertRow(0);
+    //var listing = document.getElementById('ingredients');
+    var table   = document.getElementById('ingredientTable');
+    var row=table.insertRow(1);
 
     for (var i=0; i<ingredients.length;i++){
 
-        row         = table.insertRow(0);        
-        cell1 = row.insertCell(0);
-        cell2 = row.insertCell(1);       
+        row = table.insertRow(2);        
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);   
+        var cell3 = row.insertCell(2);
 
         cell1.innerHTML=ingredients[i][0];
         cell2.innerHTML=ingredients[i][1];
-    }
-    listing.appendChild(table);
+        cell3.innerHTML=ingredients[i][2];
+    }   
 }
 
 function showTitle(title){

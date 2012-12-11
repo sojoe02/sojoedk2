@@ -17,7 +17,15 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <div id="setTitle"></div>
+        <div id="addTitle">
+            <table id="titleTable">                
+            <tr><td>Title</td></tr>
+                <tr>
+                    <td colspan="1"><input type="text" id="setTitle"/>
+                    </td>                  
+                </tr>            
+            </table>
+        </div>
         <div id="setIngredients">
             <table id="ingredientTable"> 
                 <tr id="ingHead"><th></th><th>Ingredient</th><th>Amount</th><th>Amount Type</th></tr>                              <tr>
@@ -37,15 +45,15 @@ and open the template in the editor.
                     
                     <td><input type="text" id="setVideoID"/><td>                        
                         <select id="setVideoType">
-                            <option>Vimeo</option>
-                            <option>Youtube</option>
+                            <option>vimeo</option>
+                            <option>youtube</option>
                         </select>
                 </tr> 
                 <tr><td>ImageSet ID</td><td>Provider</td></tr>
                 <tr>
                     <td><input type="text" id="setImageID"/><td>
                         <select id="setImageType">
-                            <option>Flickr</option>
+                            <option>flickr</option>
                         </select>
                 </tr>
                 <tr><td>Description</td><td></td></tr>

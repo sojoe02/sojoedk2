@@ -6,6 +6,7 @@
 
 var recipe = {};
 recipe.ingredients ={};
+var recipeXML;
 //recipe.title = {};
 //recipe.description = {};
 var ingredientsTable;
@@ -63,7 +64,7 @@ function addIngredient(){
     //setup the removal button
     var removeButton = document.createElement('input');
     removeButton.setAttribute('type', 'button');
-    removeButton.setAttribute('name', 'x');
+    removeButton.value = 'X';
     removeButton.onclick = function(){
         var row = document.getElementById(name);        
         row.parentNode.removeChild(row);
@@ -81,9 +82,7 @@ function addIngredient(){
     var removeButtonCell = row.insertCell(0);       
     var nameCell = row.insertCell(1);
     var amountCell = row.insertCell(2)
-    var amountTypeCell = row.insertCell(3);
-    
-    
+    var amountTypeCell = row.insertCell(3);   
     
     removeButtonCell.appendChild(removeButton);
     nameCell.innerHTML = name;
@@ -131,20 +130,52 @@ function showRecipe(){
 
 
 function constructXML(){
-    var str = '<?xml version="1.0" encoding="UTF-8"?>';
+    var str =""; 
+    str += '<?xml version="1.0" encoding="UTF-8"?>';
     str += '<recipe>';
-    //add ingredients:
+    //add title:
+    str+='<title>'+recipe.title.title+'</title>';
+    //add description:
+    str +='<desc>' + recipe.desc.desc +'</desc>';
+    //add ingredients:    
     str += '<ingredients>';
     for(x in recipe.ingredients){
         str+='<ingredient ';
-        str+='name='+recipe.ingredients[x].name;
-        str+=', amount=' + recipe.ingredients[x].amount;
-        str+=', amountType=' + recipe.ingredients[x].amountType;
+        str+='name="'+recipe.ingredients[x].name+'"';
+        str+=' amount="' + recipe.ingredients[x].amount +'"';
+        str+=' amountType="' + recipe.ingredients[x].amountType+'"';
         str+='/>';            
     }
     str+='</ingredients>';    
-    str += '</recipe>';
+    //add video data:
+    str+='<video '+'type="' + recipe.video.type +'" ';
+    str+='id="' +recipe.video.id +'" />';
+    //add image data:
+    str+='<images type="' + recipe.images.type + '" ';
+    str+='id="' +recipe.images.id+'" />';
+    //finalize:
+    str+='</recipe>';    
     
-    var text = document.createTextNode(str);
+    recipeXML = str;
+    var text = document.createTextNode(recipeXML);
     document.getElementById('preview').appendChild(text);
+}
+
+function preview(){ 
+    //add title
+    addTitle(document.getElementById('setTitle').value)
+    //add description    
+    addDesc(document.getElementById('setDesc').value);
+    //add video
+    var type = document.getElementById('setVideoType').value;
+    var id = document.getElementById('setVideoID').value;
+    addVideo(type, id)
+    //add Image
+    type = document.getElementById('setImageType').value;
+    id = document.getElementById('setImageID').value;
+    addImages(type, id);   
+    
+    constructXML();
+    var packed = recipeXML;
+    window.location = "displayPreview.html?"+packed;        
 }
