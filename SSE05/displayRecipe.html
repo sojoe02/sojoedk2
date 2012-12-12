@@ -7,7 +7,7 @@ and open the template in the editor.
     <head>
         <title>Display Recipe</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <style type="text/css">
             @import "default.css";
         </style>
@@ -17,12 +17,12 @@ and open the template in the editor.
         <script type="text/javascript" src="displayrecipe.js" >      
            
         </script>
-        
+
         <script  type="text/javascript">         
             $(document).ready(init);
         </script>
-        
-        
+
+
     </head>
     <body>   
         <!--<input type="button" value="Print Recipe" onClick= "getRecipeData()">-->
@@ -31,12 +31,18 @@ and open the template in the editor.
         <div id="desc"></div> 
         <div id="ingredients">
             <table id="ingredientTable"> 
-                <tr id="ingHead">
+                <tr class="tableHead">
                     <th>Ingredient</th><th>Amount</th><th>Amount Type</th>
                 </tr> 
             </table>  
         </div>        
         <div id="images"></div>          
-        <div id="video"></div>        
-        
+        <div id="video"></div> 
+        <div id="alternatives">
+            <table id="alternativesTable"> 
+                <tr class="tableHead">
+                    <th>Ingredient</th><th>Amount</th><th>Amount Type</th>
+                </tr> 
+            </table>         
+        </div>        
     </body>

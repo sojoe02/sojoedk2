@@ -3,7 +3,8 @@
  * and open the template in the editor.
  */
 
-
+var XMLdoc;
+var query;
 //Video stuff:
 function init(){   
     getRecipeData();
@@ -17,7 +18,7 @@ function processData(){
 
 function getRecipeData(){    
 
-    var query = unescape(window.location.search);
+    query = unescape(window.location.search);
     if (query.substring(0, 1) == '?') {
         query = query.substring(1);
     }
@@ -25,16 +26,17 @@ function getRecipeData(){
     //var text = document.createTextNode(query);
     //document.getElementById('submit').appendChild(text);
     
-    var XMLdoc = loadXMLString(query);   
+    XMLdoc = loadXMLString(query);   
     
     var ingredients = [];
     var x = XMLdoc.getElementsByTagName("ingredient");
 
     for (var i=0;i< x.length ;i++){
-        var inner = [2];
+        var inner = [3];
         inner[0] = x[i].getAttribute("name");
         inner[1] = x[i].getAttribute("amount");
         inner[2] = x[i].getAttribute("amountType");
+        inner[3] = x[i].getAttribute("id");
         ingredients[i] = inner;
     }
 
@@ -77,6 +79,25 @@ function showIngredients(ingredients){
         cell1.innerHTML=ingredients[i][0];
         cell2.innerHTML=ingredients[i][1];
         cell3.innerHTML=ingredients[i][2];
+        
+        row.setAttribute('id', ingredients[i][3]);   
+        row.onclick =  function(){
+            jQuery.get("emil/getingredientrep.php",{       
+                id : this.getAttribute('id')        
+            },function(data){  
+                var table = document.getElementById('alternativesTable');
+                var x = data.getElementsByTagName("ingredient");
+                var row = table.insertRow(1);
+                
+                for(var i=x.length-1; i>=0;i--){
+                    row = table.insertRow(2);
+                    var cell1 = row.insertCell(0);
+                    cell1.innerHTML = x[i].getAttribute('name');
+                }               
+            });
+        
+        }; 
+        
     }   
 }
 
@@ -162,6 +183,12 @@ function showImages(setID){
             }).appendTo("#images");
         }
     });
+    
+}
+
+function submitRecipe(){
+    jQuery.post("emil/addrecipe.php",{recipe : query}
+        );        
 }
 
 function loadXMLDoc(dname)
