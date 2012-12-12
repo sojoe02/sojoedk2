@@ -19,25 +19,30 @@ and open the template in the editor.
     <body>
         <div id ="search">
             <table id="searchTable"> 
-                <tr id="ingHead"><th></th><th>Ingredient</th><th>Amount</th><th>Amount Type</th></tr>                              <tr>
+                <tr id="ingHead"><th></th><th>Ingredient</th>
+                </tr>                              <tr>
                     <td><button type="button" onclick="addIngredient()">
                             Add
                         </button>
                     </td>
-                    <td><input type="text" id="inputIngredient"/></td>
-                    <td><input type="text" id="inputAmount"/></td>
-                    <td><input type="text" id="inputAmountType"/></td>                        
+                    <td><input type="text" id="inputIngredient"/></td>                                   
                 </tr>
             </table>            
         </div>
         <div>
-            <button type="button" onclick="addIngredient()">
+            <button type="button" onclick="submitSearch()">
                 Search
             </button>
         </div>
         <div>
             <table id="displaySearchTable">
+                <tr id="tableHead">
+                    <th>Title</th><th>Score</th>
+                </tr> 
             </table>            
-        </div>        
+        </div> 
+        <div id ="preview">
+            
+            </div>
     </body>
 </html>

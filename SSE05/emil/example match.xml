@@ -1,0 +1,8 @@
+
+<recipes>
+    <recipe title="Stiffy iffy, brewed" id="14" score="2"/>
+    <recipe title="Stiffy iffy" id="15" score="2"/>
+    <recipe title="Stiffy fiffy " id="16" score="2"/>
+    <recipe title="+$recipename+" id="1" score="1"/>
+    <recipe title="Carrots and Parrots, stewed" id="2" score="1"/>
+</recipes>

@@ -231,7 +231,7 @@ function ajaxFunctionFlikr(){
 function ajaxFunctionFlikrRest(){
 
     var func = "gerRest"
-    var item = document.getElementById('searchPHP').value
+    var item = tdocument.getElementById('searchPHP').value
     
     jQuery.get("getFlikr.php",{
         func : func, 

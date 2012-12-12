@@ -1,0 +1,6 @@
+http://127.0.1.1/getingredientrep.php?id=2
+
+<ingredients>
+<ingredient name="parrot" calories="1500"/>
+<ingredient name="goat" calories="5"/>
+</ingredients>

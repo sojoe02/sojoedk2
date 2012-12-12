@@ -1,0 +1,11 @@
+http://127.0.1.1/getingredientrep.php?id=2
+<ingredients>
+<ingredient name="test" calories="" replacement=""/>
+<ingredient name="carrot" calories="500" replacement="1"/>
+<ingredient name="parrot" calories="1500" replacement="2"/>
+<ingredient name="goat" calories="5" replacement="2"/>
+<ingredient name="beef" calories="4500" replacement=""/>
+<ingredient name="ash" calories="0" replacement=""/>
+<ingredient name="soda" calories="1005" replacement=""/>
+<ingredient name="spicegirl" calories="40" replacement=""/>
+</ingredients>
