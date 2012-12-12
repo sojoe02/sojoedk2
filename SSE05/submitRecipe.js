@@ -157,15 +157,24 @@ function constructXML(){
     str+='</recipe>';    
     
     recipeXML = str;
-    var text = document.createTextNode(recipeXML);
-    document.getElementById('preview').appendChild(text);
+//var text = document.createTextNode(recipeXML);
+//document.getElementById('preview').appendChild(text);
 }
 
 function preview(){ 
     //add title
     addTitle(document.getElementById('setTitle').value)
     //add description    
-    addDesc(document.getElementById('setDesc').value);
+    //addDesc(document.getElementById('setDesc').value);
+    $.valHooks.textarea = {
+        get: function(elem) {
+            return elem.value.replace(/\r?\n/g, "\r\n");
+        }
+    };
+    
+    var temp = $('textarea').val();
+    addDesc(temp);
+    //addDesc(('#setDesc').text());
     //add video
     var type = document.getElementById('setVideoType').value;
     var id = document.getElementById('setVideoID').value;
@@ -175,7 +184,11 @@ function preview(){
     id = document.getElementById('setImageID').value;
     addImages(type, id);   
     
+    //var text = document.createTextNode(temp);
+    //document.getElementById('submit').appendChild(text);
+    //alert($('textarea').val());
+    
     constructXML();
     var packed = recipeXML;
-    window.location = "displayPreview.html?"+packed;        
+window.location = "displayPreview.html?"+packed;        
 }

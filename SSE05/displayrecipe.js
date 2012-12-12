@@ -19,6 +19,7 @@ function processData(){
 function getRecipeData(){    
 
     query = unescape(window.location.search);
+    //query =
     if (query.substring(0, 1) == '?') {
         query = query.substring(1);
     }
@@ -46,13 +47,20 @@ function getRecipeData(){
     
     //load the video data, throw an exception if the video tag doesn't exist:
     try{
-        vidID = XMLdoc.getElementsByTagName("video")[0].getAttribute("id");
+        var vidID = XMLdoc.getElementsByTagName("video")[0].getAttribute("id");
         var vidType = XMLdoc.getElementsByTagName("video")[0].getAttribute("type");
-        showVideo(vidType);                    
+        if(vidID != ""){
+            showVideo(vidType);                    
+        }
     } catch(e){}       
     try{
         var setID = XMLdoc.getElementsByTagName("images")[0].getAttribute("id");
-        showImages(setID);
+        if(setID != ""){            
+            showImages(setID);                    
+        } else{
+            var div = document.getElementById('images');
+            div.parentNode.removeChild(div);
+        }
     } catch(e){}
     
 }
@@ -80,19 +88,29 @@ function showIngredients(ingredients){
         cell2.innerHTML=ingredients[i][1];
         cell3.innerHTML=ingredients[i][2];
         
-        row.setAttribute('id', ingredients[i][3]);   
+        row.setAttribute('id', ingredients[i][3]);         
+        
         row.onclick =  function(){
             jQuery.get("emil/getingredientrep.php",{       
                 id : this.getAttribute('id')        
             },function(data){  
                 var table = document.getElementById('alternativesTable');
-                var x = data.getElementsByTagName("ingredient");
-                var row = table.insertRow(1);
+                //clear the table:                
+                //or use :  var table = document.all.tableid;
+                for(var i = table.rows.length-1; i >= 0; i--)                {
+                    table.deleteRow(i);
+                }
                 
-                for(var i=x.length-1; i>=0;i--){
-                    row = table.insertRow(2);
+                var x = data.getElementsByTagName("ingredient");
+                var row = table.insertRow(0);
+                row.setAttribute('class', 'tableHead');
+                var cellHead = row.insertCell(0);
+                cellHead.innerHTML = "Alternatives:";
+                
+                for(var j=x.length-1; j>=0;j--){
+                    row = table.insertRow(1);
                     var cell1 = row.insertCell(0);
-                    cell1.innerHTML = x[i].getAttribute('name');
+                    cell1.innerHTML = x[j].getAttribute('name');
                 }               
             });
         
@@ -106,7 +124,9 @@ function showTitle(title){
 }
 
 function showDesc(desc){
-    document.getElementById("desc").innerHTML = desc;
+    //document.getElementById("desc").innerHTML = desc;
+    var text = document.createTextNode(desc);
+    document.getElementById('desc').appendChild(text);   
 }
 
 
@@ -167,7 +187,7 @@ function showImages(setID){
         var jsonobj = JSON.parse(data) ;
         var photoarray = jsonobj.photoset;
         
-        for(var i=0; i<5;i++){
+        for(var i=0; i<photoarray.photo.length;i++){            
             jQuery("<img/>").attr({
                 //building the image:
                 src : 'http://farm' 
@@ -187,8 +207,14 @@ function showImages(setID){
 }
 
 function submitRecipe(){
-    jQuery.post("emil/addrecipe.php",{recipe : query}
-        );        
+    jQuery.post("emil/addrecipe.php",{
+        recipe : query
+    });
+    
+    alert("Recipe Posted");
+    
+    window.location = "start.html";
+        
 }
 
 function loadXMLDoc(dname)

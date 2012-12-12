@@ -104,8 +104,8 @@ function buildSearchTable(resultXML){
                 id : this.getAttribute('id')        
             },function(data){  
                 //var resultXML = loadXMLString(data);
-                var text = document.createTextNode(data);
-                document.getElementById('preview').appendChild(text);   
+                //var text = document.createTextNode(data);
+                //document.getElementById('preview').appendChild(text);   
                 var packed = data;
                 window.location = "displayRecipe.html?"+packed;
             });
